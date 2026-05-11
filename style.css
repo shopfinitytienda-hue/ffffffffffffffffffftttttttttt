@@ -1,0 +1,415 @@
+/*
+Theme Name: Tienda Azul Directa
+Theme URI: https://example.com/tienda-azul-directa
+Author: Codex
+Description: Plantilla WordPress y WooCommerce moderna, adaptable y orientada a compra directa sin carrito.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.8
+Requires PHP: 7.4
+Text Domain: tienda-azul-directa
+*/
+
+:root {
+  --tad-blue-900: #073b8e;
+  --tad-blue-700: #0b63ce;
+  --tad-blue-500: #1683ff;
+  --tad-blue-100: #eaf4ff;
+  --tad-white: #ffffff;
+  --tad-ink: #0d1b2a;
+  --tad-muted: #5b6b82;
+  --tad-success: #10b981;
+  --tad-warning: #ffb020;
+  --tad-danger: #ff4d61;
+  --tad-radius: 24px;
+  --tad-shadow: 0 22px 60px rgba(7, 59, 142, 0.16);
+  --tad-header-height: 82px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--tad-ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(180deg, #f7fbff 0%, #ffffff 48%, #eef7ff 100%);
+}
+a { color: inherit; text-decoration: none; }
+img, video { display: block; max-width: 100%; height: auto; }
+button, input, select, textarea { font: inherit; }
+
+.tad-container {
+  width: min(1180px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.tad-site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  min-height: var(--tad-header-height);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.78);
+  border-bottom: 1px solid rgba(22, 131, 255, 0.12);
+  box-shadow: 0 12px 36px rgba(7, 59, 142, 0.08);
+}
+.tad-header-inner {
+  min-height: var(--tad-header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+}
+.tad-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: clamp(1.05rem, 2vw, 1.45rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--tad-blue-900);
+}
+.tad-logo-mark {
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  color: var(--tad-white);
+  background: linear-gradient(135deg, var(--tad-blue-900), var(--tad-blue-500));
+  box-shadow: 0 12px 24px rgba(22, 131, 255, 0.28);
+}
+.tad-menu-toggle { display: none; }
+.tad-main-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tad-main-nav a {
+  display: inline-flex;
+  padding: 12px 14px;
+  border-radius: 999px;
+  color: var(--tad-muted);
+  font-weight: 800;
+}
+.tad-main-nav a:hover,
+.tad-main-nav .current-menu-item > a {
+  color: var(--tad-blue-900);
+  background: var(--tad-blue-100);
+}
+.tad-header-actions { display: flex; gap: 10px; align-items: center; }
+.tad-pill,
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+.tad-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 999px;
+  padding: 13px 20px;
+  color: var(--tad-white) !important;
+  background: linear-gradient(135deg, var(--tad-blue-700), var(--tad-blue-500)) !important;
+  font-weight: 900;
+  box-shadow: 0 14px 32px rgba(22, 131, 255, 0.28);
+  cursor: pointer;
+}
+.tad-pill--ghost {
+  color: var(--tad-blue-900) !important;
+  background: rgba(234, 244, 255, 0.95) !important;
+  box-shadow: none;
+}
+
+.tad-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(42px, 7vw, 88px) 0 34px;
+}
+.tad-hero::before {
+  content: "";
+  position: absolute;
+  inset: -120px -80px auto auto;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(22, 131, 255, 0.25), transparent 62%);
+}
+.tad-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(340px, 1.05fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+.tad-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  padding: 8px 12px;
+  color: var(--tad-blue-900);
+  background: rgba(234, 244, 255, 0.92);
+  border: 1px solid rgba(22, 131, 255, 0.2);
+  border-radius: 999px;
+  font-weight: 900;
+}
+.tad-hero h1 {
+  margin: 0 0 18px;
+  font-size: clamp(2.2rem, 7vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.08em;
+}
+.tad-gradient-text {
+  color: transparent;
+  background: linear-gradient(135deg, var(--tad-blue-900), var(--tad-blue-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.tad-lead {
+  margin: 0 0 26px;
+  color: var(--tad-muted);
+  font-size: clamp(1rem, 2vw, 1.18rem);
+  line-height: 1.7;
+}
+.tad-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.tad-product-slider,
+.tad-flash-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: calc(var(--tad-radius) + 10px);
+}
+.tad-slider-track,
+.tad-carousel-track {
+  display: flex;
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tad-slide {
+  min-width: 100%;
+  padding: 12px;
+}
+.tad-slide-card,
+.tad-product-card,
+.tad-ad-card,
+.tad-product-summary,
+.tad-account-panel,
+.woocommerce form.checkout {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(22, 131, 255, 0.12);
+  border-radius: var(--tad-radius);
+  box-shadow: var(--tad-shadow);
+}
+.tad-slide-card {
+  min-height: 480px;
+  display: grid;
+  align-content: end;
+  overflow: hidden;
+  position: relative;
+  padding: 24px;
+}
+.tad-slide-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.tad-slide-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 59, 142, 0.05), rgba(7, 59, 142, 0.86));
+  z-index: 1;
+}
+.tad-slide-content { position: relative; z-index: 2; color: var(--tad-white); }
+.tad-slide-content h2 { margin: 0 0 8px; font-size: clamp(1.7rem, 4vw, 2.8rem); letter-spacing: -0.05em; }
+.tad-price { color: var(--tad-blue-700); font-weight: 950; font-size: 1.18rem; }
+.tad-slide-content .tad-price { color: var(--tad-white); }
+
+.tad-section { padding: clamp(34px, 6vw, 78px) 0; }
+.tad-section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+.tad-section h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  letter-spacing: -0.06em;
+}
+.tad-section p { color: var(--tad-muted); }
+.tad-countdown { display: flex; gap: 10px; flex-wrap: wrap; }
+.tad-timebox {
+  min-width: 72px;
+  padding: 10px;
+  text-align: center;
+  color: var(--tad-white);
+  background: linear-gradient(135deg, var(--tad-blue-900), var(--tad-blue-500));
+  border-radius: 18px;
+  box-shadow: 0 14px 28px rgba(22, 131, 255, 0.22);
+}
+.tad-timebox strong { display: block; font-size: 1.35rem; }
+.tad-timebox span { font-size: 0.75rem; opacity: 0.9; }
+
+.tad-carousel-item { min-width: min(88vw, 320px); padding: 10px; }
+.tad-product-card {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  padding: 14px;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+.tad-product-card:hover { transform: translateY(-6px); box-shadow: 0 28px 70px rgba(7, 59, 142, 0.18); }
+.tad-product-card img {
+  width: 100%;
+  aspect-ratio: 1 / 0.86;
+  object-fit: cover;
+  border-radius: 20px;
+  background: var(--tad-blue-100);
+}
+.tad-product-card h3 { margin: 14px 0 8px; font-size: 1.08rem; letter-spacing: -0.02em; }
+.tad-card-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 14px; }
+.tad-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  color: var(--tad-blue-900);
+  background: var(--tad-blue-100);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+.tad-badge--danger { color: #8a1020; background: #ffe9ed; }
+.tad-badge--success { color: #065f46; background: #dcfce7; }
+
+.tad-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+  gap: 18px;
+}
+.tad-ad-card {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+  align-items: center;
+  overflow: hidden;
+  padding: clamp(24px, 4vw, 42px);
+  background: linear-gradient(135deg, rgba(7, 59, 142, 0.98), rgba(22, 131, 255, 0.9));
+  color: var(--tad-white);
+}
+.tad-ad-card p { color: rgba(255,255,255,0.86); }
+.tad-ad-card img { border-radius: 28px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); }
+.tad-free-shipping-bar {
+  margin-top: 20px;
+  padding: 14px 18px;
+  border-radius: 999px;
+  text-align: center;
+  font-weight: 950;
+  color: var(--tad-blue-900);
+  background: linear-gradient(90deg, #dff3ff, #ffffff, #dff3ff);
+  border: 1px solid rgba(22, 131, 255, 0.16);
+}
+
+.tad-product-page { padding: clamp(28px, 5vw, 68px) 0; }
+.tad-product-detail-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr); gap: 28px; align-items: start; }
+.tad-product-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.tad-product-gallery img,
+.tad-product-gallery video {
+  width: 100%;
+  border-radius: 22px;
+  aspect-ratio: 1 / 0.86;
+  object-fit: cover;
+  background: var(--tad-blue-100);
+}
+.tad-product-gallery > :first-child { grid-column: 1 / -1; aspect-ratio: 1.35 / 1; }
+.tad-product-summary { padding: clamp(22px, 4vw, 34px); position: sticky; top: calc(var(--tad-header-height) + 18px); }
+.tad-product-summary h1 { margin: 12px 0; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1; letter-spacing: -0.07em; }
+.tad-product-meta-list { display: grid; gap: 10px; margin: 22px 0; padding: 0; list-style: none; }
+.tad-product-meta-list li { display: flex; justify-content: space-between; gap: 12px; padding: 12px; border-radius: 16px; background: #f4f9ff; }
+.tad-buy-box .variations, .tad-buy-box table { width: 100%; }
+.tad-buy-box select, .woocommerce form .form-row input.input-text, .woocommerce form .form-row textarea, .woocommerce form .form-row select {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid rgba(22, 131, 255, 0.2);
+  border-radius: 16px;
+  padding: 12px 14px;
+  background: #f8fbff;
+}
+
+.woocommerce form.checkout { padding: clamp(18px, 4vw, 34px); }
+.woocommerce-checkout-review-order, .woocommerce-billing-fields, .woocommerce-shipping-fields, .woocommerce-additional-fields {
+  padding: 18px;
+  border-radius: 22px;
+  background: #f7fbff;
+  margin-bottom: 18px;
+}
+.woocommerce-order {
+  padding: 24px;
+  border-radius: var(--tad-radius);
+  background: #ffffff;
+  box-shadow: var(--tad-shadow);
+}
+.tad-success-recommendations { margin-top: 34px; }
+
+.tad-account-panel { padding: clamp(18px, 4vw, 34px); }
+.woocommerce-MyAccount-navigation ul { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0; }
+.woocommerce-MyAccount-navigation a { display: inline-flex; padding: 10px 14px; border-radius: 999px; background: var(--tad-blue-100); color: var(--tad-blue-900); font-weight: 900; }
+
+.tad-legal-footer {
+  padding: 24px 0 34px;
+  color: var(--tad-muted);
+  text-align: center;
+}
+.tad-legal-footer nav { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 10px; }
+.tad-legal-footer a { color: var(--tad-blue-900); font-weight: 800; }
+
+@media (max-width: 880px) {
+  .tad-menu-toggle { display: inline-flex; }
+  .tad-main-nav {
+    position: fixed;
+    top: var(--tad-header-height);
+    left: 16px;
+    right: 16px;
+    padding: 14px;
+    border-radius: 24px;
+    background: rgba(255,255,255,0.96);
+    box-shadow: var(--tad-shadow);
+    transform: translateY(-16px);
+    opacity: 0;
+    pointer-events: none;
+    transition: 180ms ease;
+  }
+  body.tad-menu-open .tad-main-nav { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .tad-main-nav ul { flex-direction: column; align-items: stretch; }
+  .tad-main-nav a { justify-content: center; }
+  .tad-header-actions .tad-pill--ghost { display: none; }
+  .tad-hero-grid, .tad-product-detail-grid, .tad-ad-card { grid-template-columns: 1fr; }
+  .tad-slide-card { min-height: 390px; }
+  .tad-product-summary { position: static; }
+}
+
+@media (max-width: 560px) {
+  .tad-container { width: min(100% - 22px, 1180px); }
+  .tad-header-inner { gap: 10px; }
+  .tad-logo-mark { width: 40px; height: 40px; border-radius: 14px; }
+  .tad-products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .tad-product-card { padding: 9px; border-radius: 18px; }
+  .tad-product-card img { border-radius: 14px; }
+  .tad-card-actions { flex-direction: column; align-items: stretch; }
+  .tad-card-actions .tad-button { width: 100%; padding-inline: 12px; }
+  .tad-section-head { display: block; }
+  .tad-product-gallery { grid-template-columns: 1fr; }
+}
